@@ -6,7 +6,7 @@ import com.example.insuranceapi.model.RiskParameter;
 import com.example.insuranceapi.model.Vehicle;
 import com.example.insuranceapi.service.RiskParameterService;
 import com.example.insuranceapi.service.VehicleService;
-import dto.RiskParamDTO;
+import com.example.insuranceapi.dto.RiskParamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +32,7 @@ public class InsuranceController {
             riskParameters.add(riskParameterService.getRiskParameter(riskDto.getId()));
         }
         List<Vehicle> vehicles = vehicleService.getVehicles();
-        Set<Vehicle> vehicleSet = new HashSet<Vehicle>(vehicles);
+        Set<Vehicle> vehicleSet = new HashSet<>(vehicles);
         cascoCalculator.calculateAnnualCascoForVehiclesSet(vehicleSet, riskParameters, null);
         Map<String, Boolean> response = new HashMap<>();
         response.put("calculated casco", Boolean.TRUE);

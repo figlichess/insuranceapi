@@ -4,7 +4,7 @@ import com.example.insuranceapi.converter.DTOConverter;
 import com.example.insuranceapi.exception.ResourceNotFoundException;
 import com.example.insuranceapi.model.RiskParameter;
 import com.example.insuranceapi.service.RiskParameterService;
-import dto.RiskParamDTO;
+import com.example.insuranceapi.dto.RiskParamDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -47,11 +47,10 @@ public class RiskParameterController {
     @GetMapping("/allriskparams")
     public List<RiskParamDTO> getAllRiskParameter() {
         List<RiskParameter> riskParameters = riskParameterService.getRiskParameters();
-        List<RiskParamDTO> riskParamDTOs = riskParameters
+        return riskParameters
                 .stream()
                 .map(l -> dtoConverter.convertToRiskParamDTO(l))
                 .collect(toList());
-        return riskParamDTOs;
     }
 
     @GetMapping("/{id}")

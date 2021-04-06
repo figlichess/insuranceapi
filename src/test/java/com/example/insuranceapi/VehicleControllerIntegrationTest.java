@@ -1,7 +1,7 @@
 package com.example.insuranceapi;
 
 import com.example.insuranceapi.model.Vehicle;
-import dto.VehicleDTO;
+import com.example.insuranceapi.dto.VehicleDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class VehicleControllerIntegrationTest {
     @Test
     public void testGetAllVehicles() {
         HttpHeaders headers = new HttpHeaders();
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+        HttpEntity<String> entity = new HttpEntity<>(null, headers);
 
         ResponseEntity<String> response = restTemplate.exchange(getRootUrl() + "/vehicles",
                 HttpMethod.GET, entity, String.class);
@@ -81,7 +81,7 @@ public class VehicleControllerIntegrationTest {
         restTemplate.delete(getRootUrl() + "/vehicles/" + id);
 
         try {
-            vehicle = restTemplate.getForObject(getRootUrl() + "/vehicles/" + id, Vehicle.class);
+            restTemplate.getForObject(getRootUrl() + "/vehicles/" + id, Vehicle.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }

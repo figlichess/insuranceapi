@@ -4,7 +4,7 @@ import com.example.insuranceapi.converter.DTOConverter;
 import com.example.insuranceapi.exception.ResourceNotFoundException;
 import com.example.insuranceapi.model.Vehicle;
 import com.example.insuranceapi.service.VehicleService;
-import dto.VehicleDTO;
+import com.example.insuranceapi.dto.VehicleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -47,11 +47,10 @@ public class VehicleController {
     @GetMapping("/allvehicles")
     public List<VehicleDTO> getAllVehicles() {
         List<Vehicle> vehicles = vehicleService.getVehicles();
-        List<VehicleDTO> vehicleDTOs = vehicles
+        return vehicles
                 .stream()
                 .map(l -> dtoConverter.convertToVehicleDTO(l))
                 .collect(toList());
-        return vehicleDTOs;
     }
 
     @GetMapping("/{id}")

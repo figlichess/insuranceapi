@@ -2,8 +2,8 @@ package com.example.insuranceapi.converter;
 
 import com.example.insuranceapi.model.RiskParameter;
 import com.example.insuranceapi.model.Vehicle;
-import dto.RiskParamDTO;
-import dto.VehicleDTO;
+import com.example.insuranceapi.dto.RiskParamDTO;
+import com.example.insuranceapi.dto.VehicleDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -59,9 +59,8 @@ public class DTOConverter {
     }
 
     public RiskParameter convertToRiskParameter(RiskParamDTO riskparamDTO) {
-        RiskParameter riskparam = new RiskParameter(riskparamDTO.getType(), riskparamDTO.getVehicleParamType(),
+        return new RiskParameter(riskparamDTO.getType(), riskparamDTO.getVehicleParamType(),
                 riskparamDTO.getValue(), riskparamDTO.isFromFormula());
-        return riskparam;
 
     }
 }

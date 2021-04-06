@@ -1,4 +1,4 @@
-package dto;
+package com.example.insuranceapi.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
