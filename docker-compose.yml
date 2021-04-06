@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  springboot-docker-container:
+    image: insuranceapi-docker-container
+    container_name: insuranceapi-docker-container
+    ports:
+      - 8080:8080
+    build:
+      context: ./
+      dockerfile: Dockerfile
